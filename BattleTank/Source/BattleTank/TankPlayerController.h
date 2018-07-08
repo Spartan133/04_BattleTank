@@ -23,6 +23,12 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 private:
+	UPROPERTY(EditAnywhere)
+		float CrosshairXLocation = 0.5f;
+	
+	UPROPERTY(EditAnywhere)
+		float CrosshairYLocation = 0.3333f;
+	
 	ATank* GetControlledTank() const;
 
 	// Start the tank moving the barrel so that a shot would hit where
@@ -31,4 +37,6 @@ private:
 
 	// Return an OUT parameter, true if hit landscape
 	bool GetSightRayHitLocation(FVector& OutHitLocation) const;
+
+	
 };

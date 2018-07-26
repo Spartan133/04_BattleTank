@@ -9,7 +9,7 @@
 // Called when the game starts or when spawned
 void ATank::BeginPlay()
 {
-	Super::BeginPlay();
+	Super::BeginPlay();  // Needed for BP Begin Play to run!
 }
 
 // Sets default values
@@ -17,13 +17,16 @@ ATank::ATank()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
+
+	auto TankName = GetName();
+	UE_LOG(LogTemp, Warning, TEXT("%s SPARTAN: Tank C++ Construct"), *TankName);
 }
 
 
 void ATank::AimAt(FVector HitLocation)
 {
+	if (!TankAimingComponent) { return; }
 	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
-
 }
 
 

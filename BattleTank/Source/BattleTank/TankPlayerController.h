@@ -8,7 +8,6 @@
 #include "TankPlayerController.generated.h"
 
 // Forward Declaration
-class ATank;
 class UTankAimingComponent;
 
 /**
@@ -21,9 +20,6 @@ class BATTLETANK_API ATankPlayerController : public APlayerController
 	
 protected:
 	virtual void BeginPlay() override;
-
-	UFUNCTION(BlueprintCallable, Category = "Setup")
-		ATank* GetControlledTank() const;
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Setup")
 		void FoundAimingComponent(UTankAimingComponent* AimCompRef);

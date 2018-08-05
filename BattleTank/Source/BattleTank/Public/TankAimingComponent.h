@@ -54,8 +54,12 @@ private:
 	
 	void MoveBarrelTowards(FVector AimDirection);
 
+	bool IsBarrelMoving();
+
 	UTankBarrel* Barrel = nullptr;  // Local barrel reference for spawning projectile
 	UTankTurret* Turret = nullptr;
+
+	FVector AimDirection;
 
 
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")

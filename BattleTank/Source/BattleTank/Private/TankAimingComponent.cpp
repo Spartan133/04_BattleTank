@@ -22,6 +22,7 @@ UTankAimingComponent::UTankAimingComponent()
 void UTankAimingComponent::BeginPlay()
 {
 	LastFireTime = FPlatformTime::Seconds();
+	RoundsLeft = MaxNumberOfRounds;
 }
 
 
@@ -60,7 +61,7 @@ EFiringState UTankAimingComponent::GetFiringState() const
 }
 
 
-int UTankAimingComponent::GetRoundsLeft() const
+int32 UTankAimingComponent::GetRoundsLeft() const
 {
  	return RoundsLeft;
 }

@@ -42,7 +42,7 @@ public:
 	EFiringState GetFiringState() const;
 
 	UFUNCTION(BlueprintCallable, Category = "Firing")
-		int GetRoundsLeft() const;
+		int32 GetRoundsLeft() const;
 
 
 protected:
@@ -74,13 +74,13 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 		float ReloadTimeInSeconds = 3;
 
-	double LastFireTime = 0;
-
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 		float LaunchSpeed = 8000;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
-		int MaxNumberOfRounds = 3;
+		int32 MaxNumberOfRounds = 10;
 
-	int RoundsLeft = MaxNumberOfRounds;
+	double LastFireTime = 0;
+
+	int32 RoundsLeft = MaxNumberOfRounds;
 };

@@ -15,6 +15,7 @@ class BATTLETANK_API ATank : public APawn
 	GENERATED_BODY()
 
 public:
+
 	// Called by the engine when actor damage is dealth
 	virtual float TakeDamage
 	(
@@ -30,13 +31,16 @@ public:
 
 	FTankDelegate OnDeath;
 
+	
 private:
 	// Sets default values for this pawn's properties
 	ATank();
+
+	virtual void BeginPlay() override;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 		int32 StartingHealth = 100;
 
 	UPROPERTY(VisibleAnyWhere, Category = "Health")
-		int32 CurrentHealth = StartingHealth;
+		int32 CurrentHealth; // Initialized in Begin Play
 };

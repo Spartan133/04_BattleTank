@@ -21,6 +21,8 @@ UTankAimingComponent::UTankAimingComponent()
 
 void UTankAimingComponent::BeginPlay()
 {
+	Super::BeginPlay();
+
 	LastFireTime = FPlatformTime::Seconds();
 	RoundsLeft = MaxNumberOfRounds;
 }
@@ -43,7 +45,7 @@ void UTankAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType, F
 	{
 		FiringState = EFiringState::Reloading;
 	}
-	else if (IsBarrelMoving())  // TODO Handle aiming and locked states
+	else if (IsBarrelMoving())
 	{
 		FiringState = EFiringState::Aiming;
 	}

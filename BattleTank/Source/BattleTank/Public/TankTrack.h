@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/StaticMeshComponent.h"
+#include "SprungWheel.h"
 #include "TankTrack.generated.h"
 
 /**
@@ -21,24 +22,13 @@ public:
 	
 	// Max force per track, in Newtons
 	UPROPERTY(EditDefaultsOnly)
-		float TrackMaxDrivingForce = 40000000;  // Assume 40,000kg (40 ton tank and 1 g acceleration
+		float TrackMaxDrivingForce = 40000000.0;  // Assume 40,000kg (40 ton tank and 1 g acceleration
 	
 private:
 	UTankTrack();
 
-	virtual void BeginPlay() override;
+	TArray<class ASprungWheel*> GetWheels() const;
 
-	void ApplySidewaysForce();
+	void DriveTrack(float CurrentThrottle);
 
-	UFUNCTION()
-		void OnHit(
-			UPrimitiveComponent* HitComponent,
-			AActor* OtherActor,
-			UPrimitiveComponent* OtherComponent,
-			FVector NormalImpulse,
-			const FHitResult& Hit);
-	
-	void DriveTrack();
-
-	float CurrentThrottle = 0;
 };

@@ -1,5 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+
 #include "SpawnPoint.h"
 
 
@@ -19,12 +20,11 @@ void USpawnPoint::BeginPlay()
 {
 	Super::BeginPlay();
 
-	auto NewActor = GetWorld()->SpawnActorDeferred<AActor>(SpawnClass,GetComponentTransform());
-	if (!NewActor) { return; }
+	SpawnedActor = GetWorld()->SpawnActorDeferred<AActor>(SpawnClass,GetComponentTransform());
+	if (!SpawnedActor) { return; }
 
-	NewActor->AttachToComponent(this, FAttachmentTransformRules::KeepWorldTransform);
-	UGameplayStatics::FinishSpawningActor(NewActor, GetComponentTransform());
-	
+	SpawnedActor->AttachToComponent(this, FAttachmentTransformRules::KeepWorldTransform);
+	UGameplayStatics::FinishSpawningActor(SpawnedActor, GetComponentTransform());
 }
 
 
@@ -35,4 +35,13 @@ void USpawnPoint::TickComponent(float DeltaTime, ELevelTick TickType, FActorComp
 
 	// ...
 }
+
+AActor * USpawnPoint::GetSpawnedActor() const
+{
+	return SpawnedActor;
+}
+
+
+
+
 
